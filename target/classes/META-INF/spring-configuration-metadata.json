@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "file",
+      "type": "com.scanner.qr.code.model.FileStorageProperties",
+      "sourceType": "com.scanner.qr.code.model.FileStorageProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "file.upload-path",
+      "type": "java.lang.String",
+      "sourceType": "com.scanner.qr.code.model.FileStorageProperties"
+    }
+  ],
+  "hints": []
+}
