@@ -56,7 +56,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>qr-code</finalName>
 	</build>
 	<repositories>
 		<repository>
