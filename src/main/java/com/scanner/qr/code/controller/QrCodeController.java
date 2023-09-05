@@ -44,6 +44,13 @@ public class QrCodeController {
 	@Autowired
 	private QrCodeService qrCodeService;
 
+	/**
+	 * Generates QR Code image for the given data
+	 * @param qrCode qrCode request body model that holds QR code data
+	 * @return generated QR Code file details
+	 * @throws WriterException
+	 * @throws IOException
+	 */
 	@PostMapping("create")
 	public ResponseEntity<QrCode> generateQRCode(@RequestBody QrCode qrCode) throws WriterException, IOException {
 
@@ -92,6 +99,11 @@ public class QrCodeController {
 		return new ResponseEntity<QrCode>(qrCode, HttpStatus.OK);
 	}
 
+	/**
+	 * 
+	 * @param qrCodeFile file to be scanned
+	 * @return decoded data for the given file
+	 */
 	@PostMapping(path = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response> readQrCode(@RequestParam("file") MultipartFile qrCodeFile) {
 		Response response = new Response();
@@ -113,6 +125,14 @@ public class QrCodeController {
 		return new ResponseEntity<Response>(response, HttpStatus.OK);
 	}
 
+	/**
+	 * 
+	 * @param fileName name of the file to be downloaded
+	 * @param request
+	 * @param fileType type of the file to be downloaded (e.g. JPEG/PNG)
+	 * @return file to be downloaded
+	 * @throws FileNotFoundException
+	 */
 	@GetMapping(path = "download/fileType={fileType}&filename={fileName:.+}")
 	public ResponseEntity<Resource> downloadQrCode(@PathVariable String fileName, HttpServletRequest request,
 			@PathVariable String fileType) throws FileNotFoundException {

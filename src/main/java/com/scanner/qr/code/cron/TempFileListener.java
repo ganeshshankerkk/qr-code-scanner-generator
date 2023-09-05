@@ -16,7 +16,12 @@ import com.scanner.qr.code.constants.QrCodeConstants;
 public class TempFileListener {
 
 	private static final Logger logger = LoggerFactory.getLogger(TempFileListener.class);
-
+	
+	/**
+	 * Runs a scheduler for every one hour interval
+	 * to delete temporary storage for any QR code file generated
+	 * over an hour ago
+	 */
 	@Scheduled(cron = "0 0 * * * *")
 	public void scheduleTask() {
 		if (logger.isDebugEnabled()) {
